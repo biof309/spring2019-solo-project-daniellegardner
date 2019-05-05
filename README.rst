@@ -4,7 +4,9 @@ Blood Donation Prediction
 
 In this project, I analyze data on donation characteristics of blood donors and predict whether a donation will be made in the present month
 
-`View notebook on nbviewer <https://nbviewer.jupyter.org/github/biof309/spring2019-solo-project-daniellegardner/blob/master/blood_donation_prediction.ipynb>`_.
+`View notebook on nbviewer <https://nbviewer.jupyter.org/github/biof309/spring2019-solo-project-daniellegardner/blob/master/blood_donation_prediction.ipynb>`_
+
+`View presentation <http://spring2019-solo-project-daniellegardner.s3-website-us-east-1.amazonaws.com/>`_
 
 Description
 ===========
