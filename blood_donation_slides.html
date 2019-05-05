@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Danielle Gardner" />
+  <title>Blood Donation Prediction</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">Blood Donation Prediction</h1>
+  <p class="author">
+Danielle Gardner
+  </p>
+  <p class="date">May 6, 2019</p>
+</div>
+<div id="introduction" class="titleslide slide section level1"><h1>Introduction</h1></div><div id="objective" class="slide section level2">
+<h2>Objective</h2>
+<ul>
+<li>Analyze data on donation characteristics of blood donors and predict whether donation will be made in the present month</li>
+</ul>
+</div><div id="background" class="slide section level2">
+<h2>Background</h2>
+<ul>
+<li>Blood donors are from Blood Transfusion Service Center in Hsin-Chu City, Taiwan</li>
+<li>&quot;Present month&quot; is March 2007</li>
+<li>Authors developed dataset to demonstrate application of RFM marketing model</li>
+<li>Data Source: Yeh, I-Cheng, Yang, King-Jang, and Ting, Tao-Ming, &quot;Knowledge discovery on RFM model using Bernoulli sequence,&quot; Expert Systems with Applications, 2008. Accessed from UCI Machine Learning Repository.</li>
+</ul>
+</div><div id="packages-used" class="slide section level2">
+<h2>Packages Used</h2>
+<ul>
+<li>numpy</li>
+<li>pandas</li>
+<li>matplotlib</li>
+<li>seaborn</li>
+<li>scikit-learn</li>
+<li>keras</li>
+</ul>
+</div>
+<div id="exploratory-data-analysis" class="titleslide slide section level1"><h1>Exploratory Data Analysis</h1></div><div id="dataset" class="slide section level2">
+<h2>Dataset</h2>
+<div class="figure">
+<img src="images/img1.png" />
+
+</div>
+<ul>
+<li>Data on 748 blood donors</li>
+</ul>
+</div><div id="variables" class="slide section level2">
+<h2>Variables</h2>
+<ul>
+<li><b>Recency</b>: Months since last donation</li>
+<li><b>Frequency</b>: Total number of donations</li>
+<li><b>Volume</b>: Total volume (c.c.) of blood donated</li>
+<li><b>Time</b>: Months since first donation</li>
+<li><b>Target</b>: Whether (1) or not (0) the donor made a donation in the present month</li>
+</ul>
+</div><div id="target" class="slide section level2">
+<h2>Target</h2>
+<ul>
+<li>Distribution of target values:</li>
+</ul>
+<div class="figure">
+<img src="images/img2.png" />
+
+</div>
+</div><div id="recency" class="slide section level2">
+<h2>Recency</h2>
+<ul>
+<li>Distribution of recency values:</li>
+</ul>
+<div class="figure">
+<img src="images/img3.png" />
+
+</div>
+</div><div id="frequency" class="slide section level2">
+<h2>Frequency</h2>
+<ul>
+<li>Distribution of frequency values:</li>
+</ul>
+<div class="figure">
+<img src="images/img4.png" />
+
+</div>
+</div><div id="time" class="slide section level2">
+<h2>Time</h2>
+<ul>
+<li>Distribution of time values:</li>
+</ul>
+<div class="figure">
+<img src="images/img5.png" />
+
+</div>
+</div><div id="attributes-by-target-value" class="slide section level2">
+<h2>Attributes by Target Value</h2>
+<div class="figure">
+<img src="images/img6.png" />
+
+</div>
+</div><div id="pairplot" class="slide section level2">
+<h2>Pairplot</h2>
+<div class="figure">
+<img src="images/img7.png" />
+
+</div>
+</div>
+<div id="machine-learning" class="titleslide slide section level1"><h1>Machine Learning</h1></div><div id="models" class="slide section level2">
+<h2>Models</h2>
+<ol style="list-style-type: decimal">
+<li>Support Vector Classifier (SVC)</li>
+<li>Logistic Regression (LogReg)</li>
+<li>K Nearest Neighbors (KNN)</li>
+</ol>
+</div><div id="hyperparameter-tuning" class="slide section level2">
+<h2>Hyperparameter Tuning</h2>
+<p>All models were optimized using GridSearchCV across a range of hyperparameters</p>
+<div class="figure">
+<img src="images/img8.png" alt="Example: GridSearchCV for SVC" />
+<p class="caption">Example: GridSearchCV for SVC</p>
+</div>
+</div><div id="measuring-results-accuracy" class="slide section level2">
+<h2>Measuring Results: Accuracy</h2>
+<div class="figure">
+<img src="images/img9.png" alt="Example: Accuracy and Confusion Matrix for SVC" />
+<p class="caption">Example: Accuracy and Confusion Matrix for SVC</p>
+</div>
+</div><div id="measuring-results-roc" class="slide section level2">
+<h2>Measuring Results: ROC</h2>
+<div class="figure">
+<img src="images/img10.png" alt="Example: ROC Curve and ROC AUC Score for SVC" />
+<p class="caption">Example: ROC Curve and ROC AUC Score for SVC</p>
+</div>
+</div><div id="results" class="slide section level2">
+<h2>Results</h2>
+<ul>
+<li>Models had accuracy ranging from 0.778 to 0.791</li>
+<li>For comparison, if all target values assumed to be 0, accuracy would be 0.764</li>
+<li>Models had ROC AUC scores ranging from 0.709 to 0.774</li>
+<li>Highest accuracy: <b>K Nearest Neighbors</b></li>
+<li>Highest ROC AUC: <b>Logistic Regression</b></li>
+</ul>
+</div>
+<div id="deep-learning" class="titleslide slide section level1"><h1>Deep Learning</h1></div><div id="keras-model" class="slide section level2">
+<h2>Keras Model</h2>
+<p><img src="images/img11.png" /> <img src="images/img12.png" /></p>
+</div><div id="results-1" class="slide section level2">
+<h2>Results</h2>
+<ul>
+<li>No improvement over scikit-learn models tested</li>
+</ul>
+<div class="figure">
+<img src="images/img13.png" />
+
+</div>
+</div><div id="conclusions" class="slide section level2">
+<h2>Conclusions</h2>
+<ul>
+<li>Accuracy gains achieved from careful model selection and extensive hyperparameter tuning</li>
+<li>Provided features are limiting: to improve accuracy, try feature engineering or collect data on more features</li>
+</ul>
+</div><div id="questions" class="slide section level2">
+<h2>Questions?</h2>
+</div>
+</body>
+</html>
